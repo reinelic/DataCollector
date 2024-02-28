@@ -85,7 +85,7 @@ const AudioRecorder = () => {
 
         {audios.length > 0 &&
           audios.map((audio, index) => (
-            <audio controls='true' src={audio} type='audio.ogg'>
+            <audio controls='true' src={audio} type='audio.ogg' key={index}>
               {' '}
             </audio>
           ))}
