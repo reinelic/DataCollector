@@ -60,10 +60,9 @@ const AudioRecorder = () => {
 
   return (
     <div className='mx-auto flex max-w-3xl flex-col items-center py-20  text-center'>
-      <h2 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-        Audio Recorder Demo{' '}
-        <span className='text-blue-600'> Data Collector</span>.
-      </h2>
+      <h3 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+        Demo <span className='text-blue-600'> Data Collector</span>.
+      </h3>
 
       <p className='mt-6 max-w-prose text-lg text-muted-foreground'>
         {' '}
@@ -82,14 +81,17 @@ const AudioRecorder = () => {
 
       <div className='mt-3 flex flex-row items-center'>
         {isRecording && <p> you are recording ...</p>}
-
-        {audios.length > 0 &&
-          audios.map((audio, index) => (
-            <audio controls='true' src={audio} type='audio.ogg' key={index}>
-              {' '}
-            </audio>
-          ))}
-        <button className={buttonVariants()}>Submit your recording</button>
+        <div className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-2'>
+            {audios.length > 0 &&
+              audios.map((audio, index) => (
+                <audio controls='true' src={audio} type='audio.ogg' key={index}>
+                  {' '}
+                </audio>
+              ))}
+          </div>
+          <button className={buttonVariants()}>Submit your recording</button>
+        </div>
       </div>
     </div>
   )
