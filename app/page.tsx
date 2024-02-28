@@ -1,6 +1,14 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import { buttonVariants } from '@/components/ui/button'
+import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { authConfig, loginIsRequiredServer } from '../auth'
+
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 
 // Declare a global interface to add the webkitSpeechRecognition property to the Window object
 declare global {
@@ -9,13 +17,17 @@ declare global {
   }
 }
 
-export default function Home() {
+let mediarecorder: any = undefined
+let stream: any = undefined
+
+export default async function Home() {
+  await loginIsRequiredServer()
+
+  const session = await getServerSession(authConfig)
+
   const [permission, setPermission] = useState<boolean>(false)
   const [audios, setAudio] = useState<any[]>([])
   const [isRecording, setRecording] = useState<boolean>(false)
-
-  let mediarecorder: any = undefined
-  let stream = undefined
 
   const getMicrophonePermission = async () => {
     if ('MediaRecorder' in window) {
@@ -59,10 +71,19 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h2>Audio Recorder</h2>
-      <main>
-        <div className='audio-controls'>
+    <MaxWidthWrapper>
+      <div className='mx-auto flex max-w-3xl flex-col items-center py-20  text-center'>
+        <h2 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+          Audio Recorder Demo{' '}
+          <span className='text-blue-600'> Data Collector</span>.
+        </h2>
+
+        <p className='mt-6 max-w-prose text-lg text-muted-foreground'>
+          {' '}
+          Please click on button to start recording
+        </p>
+
+        <div className='mt-6 flex flex-col gap-4 sm:flex-row'>
           <button type='button' onClick={handleStop}>
             Stop
           </button>
@@ -70,20 +91,20 @@ export default function Home() {
           <button type='button' onClick={handleStart}>
             Record
           </button>
+        </div>
 
+        <div className='mt-3 flex flex-row items-center'>
           {isRecording && <p> you are recording ...</p>}
 
-          {audios.length > 0 ? (
+          {audios.length > 0 &&
             audios.map((audio, index) => (
               <audio controls='true' src={audio} type='audio.ogg'>
                 {' '}
               </audio>
-            ))
-          ) : (
-            <div>No audio yet </div>
-          )}
+            ))}
+          <button className={buttonVariants()}>Submit your recording</button>
         </div>
-      </main>
-    </div>
+      </div>
+    </MaxWidthWrapper>
   )
 }
