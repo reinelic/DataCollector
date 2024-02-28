@@ -1,5 +1,5 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import { AudioRecorder } from '@/components/AudioRecorder'
+import AudioRecorder from '@/components/AudioRecorder'
 
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
