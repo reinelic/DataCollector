@@ -3,9 +3,9 @@ import NavItems from './NavItems'
 import { useSession, signIn, signOut } from 'next-auth/react'
 
 export const Navbar = () => {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
 
-  console.log(`session ${session}`)
+  // console.log(`session ${session}`)
 
   return (
     <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
