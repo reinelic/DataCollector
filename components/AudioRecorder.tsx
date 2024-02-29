@@ -1,6 +1,6 @@
 'use client'
 import { buttonVariants } from '@/components/ui/button'
-import { useState, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 // Declare a global interface to add the webkitSpeechRecognition property to the Window object
 declare global {
@@ -17,26 +17,19 @@ const AudioRecorder = () => {
   const [audios, setAudio] = useState<any[]>([])
   const [isRecording, setRecording] = useState<boolean>(false)
 
-  const getMicrophonePermission = async () => {
-    if ('MediaRecorder' in window) {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: false,
-        })
-      } catch (err) {
-        alert(err.message)
-      }
-    } else {
-      alert('The MediaRecorder API is not supported in your browser.')
-    }
-  }
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({
+        audio: true,
+        video: false,
+      })
+      .then((newstream) => {
+        stream = newstream
+        console.log(stream)
+      })
+  }, [])
 
-  const handleStart = async () => {
-    await getMicrophonePermission()
-
-    setRecording(!isRecording)
-
+  const handleStart = () => {
     mediarecorder = new window.MediaRecorder(stream)
 
     const audioChunks = []
@@ -52,6 +45,8 @@ const AudioRecorder = () => {
     }
 
     mediarecorder.start()
+
+    setRecording(!isRecording)
   }
 
   const handleStop = () => {
