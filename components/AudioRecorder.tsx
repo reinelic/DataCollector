@@ -80,7 +80,7 @@ const AudioRecorder = () => {
           <div className='flex flex-col gap-2'>
             {audios.length > 0 &&
               audios.map((audio, index) => (
-                <audio controls='true' src={audio} type='audio.ogg' key={index}>
+                <audio src={audio} type='audio.ogg' key={index}>
                   {' '}
                 </audio>
               ))}
