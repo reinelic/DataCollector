@@ -35,13 +35,13 @@ const AudioRecorder = () => {
     const audioChunks: Array<any> = []
 
     mediarecorder.addEventListener('dataavailable', function (e: any) {
-      console.log('I am recording ..')
       if (e.data.size > 0) audioChunks.push(e.data)
     })
     mediarecorder.onstop = (e: any) => {
       let blob = new Blob(audioChunks, { type: 'audio/ogg ; codecs=opus' })
       let newAudio = URL.createObjectURL(blob)
-      setAudio([...audios, newAudio])
+      let audio = new Audio(newAudio)
+      setAudio([...audios, audio])
     }
 
     mediarecorder.start()
@@ -51,6 +51,12 @@ const AudioRecorder = () => {
 
   const handleStop = () => {
     if (mediarecorder) mediarecorder.stop()
+    setRecording(!isRecording)
+  }
+
+  const handlePlay = (index: any) => {
+    let audio = audios[index]
+    audio.play()
   }
 
   return (
@@ -74,15 +80,21 @@ const AudioRecorder = () => {
         </button>
       </div>
 
-      <div className='mt-3 flex flex-row items-center'>
-        {isRecording && <p> you are recording ...</p>}
+      <div className='mt-3 flex flex-col items-center'>
+        <div> {isRecording && <p> you are recording ...</p>}</div>
+
         <div className='flex flex-col gap-2'>
           <div className='flex flex-col gap-2'>
             {audios.length > 0 &&
               audios.map((audio, index) => (
-                <audio src={audio} key={index}>
-                  {' '}
-                </audio>
+                <div
+                  onClick={() => {
+                    handlePlay(index)
+                  }}
+                  key={index}
+                >
+                  `audio ${index}`
+                </div>
               ))}
           </div>
           <button className={buttonVariants()}>Submit your recording</button>

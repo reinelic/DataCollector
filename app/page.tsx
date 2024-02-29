@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  await loginIsRequiredServer()
+  // await loginIsRequiredServer()
 
-  const session = await getServerSession(authConfig)
+  // const session = await getServerSession(authConfig)
 
   return (
     <MaxWidthWrapper>
