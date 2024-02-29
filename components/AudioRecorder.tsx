@@ -38,7 +38,7 @@ const AudioRecorder = () => {
       console.log('I am recording ..')
       if (e.data.size > 0) audioChunks.push(e.data)
     })
-    mediarecorder.onstop = (e) => {
+    mediarecorder.onstop = (e: any) => {
       let blob = new Blob(audioChunks, { type: 'audio/ogg ; codecs=opus' })
       let newAudio = URL.createObjectURL(blob)
       setAudio([...audios, newAudio])
