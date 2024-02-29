@@ -32,7 +32,7 @@ const AudioRecorder = () => {
   const handleStart = () => {
     mediarecorder = new window.MediaRecorder(stream)
 
-    const audioChunks = []
+    const audioChunks: Array<any> = []
 
     mediarecorder.addEventListener('dataavailable', function (e: any) {
       console.log('I am recording ..')
