@@ -1,3 +1,5 @@
+'use client'
+
 import MaxWidthWrapper from './MaxWidthWrapper'
 import NavItems from './NavItems'
 import { signOut } from 'next-auth/react'
@@ -5,7 +7,7 @@ import { getServerSession } from 'next-auth'
 import { authConfig } from '../auth'
 import { useEffect } from 'react'
 
-export const Navbar = async () => {
+export const Navbar = () => {
   useEffect(() => {
     const session = await getServerSession(authConfig)
   }, [])
