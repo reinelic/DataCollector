@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react'
 export const Navbar = () => {
   const [user, setUser] = useState<any>(null)
 
-  const { data: session, status } = useSession()
-  console.log(session)
+  // const { data: session, status } = useSession()
+  // console.log(session)
 
   return (
     <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
