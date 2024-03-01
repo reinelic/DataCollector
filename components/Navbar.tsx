@@ -2,22 +2,15 @@
 
 import MaxWidthWrapper from './MaxWidthWrapper'
 import NavItems from './NavItems'
-import { signOut } from 'next-auth/react'
-import { getServerSession } from 'next-auth'
-import { useSession } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import { authConfig } from '../auth'
 import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
   const [user, setUser] = useState<any>(null)
-  useEffect(() => {
-    getSession()
-  }, [])
 
-  const getSession = async () => {
-    const session = await getServerSession(authConfig)
-    console.log(session)
-  }
+  const { data: session, status } = useSession()
+  console.log(session)
 
   return (
     <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
