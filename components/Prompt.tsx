@@ -1,6 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 export default function Prompt() {
   const [id, setId] = useState<any>(1)
@@ -30,8 +38,14 @@ export default function Prompt() {
 
   return (
     <>
-      <div> Please read the prompt below </div>
-      <div>{prompt}</div>
+      <Card className='mt-2 h-full w-full bg-slate-100'>
+        <CardHeader>
+          <CardDescription> the prompt will last 2 sec </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>{prompt}</p>
+        </CardContent>
+      </Card>
       <span onClick={handleSkip}> Skip </span>
     </>
   )
