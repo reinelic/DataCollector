@@ -1,5 +1,7 @@
 'use client'
 import { buttonVariants } from '@/components/ui/button'
+import { Mic, Ban, StopCircle } from 'lucide-react'
+
 import { useState, useEffect } from 'react'
 import Prompt from './Prompt'
 
@@ -62,30 +64,26 @@ const AudioRecorder = () => {
 
   return (
     <div className='mx-auto flex max-w-3xl flex-col items-center py-20  text-center'>
-      <h3 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-        Demo <span className='text-blue-600'> Data Collector</span>.
-      </h3>
-
       <Prompt />
 
       <p className='mt-6 max-w-prose text-lg text-muted-foreground'>
         {' '}
         Please click on button to start recording
       </p>
-
       <div className='mt-6 flex flex-col gap-4 sm:flex-row'>
-        <button type='button' onClick={handleStop}>
-          Stop
-        </button>
-
-        <button type='button' onClick={handleStart}>
-          Record
-        </button>
+        {isRecording ? (
+          <button type='button' onClick={handleStop}>
+            {' '}
+            <StopCircle />
+          </button>
+        ) : (
+          <button type='button' onClick={handleStart}>
+            <Mic />
+          </button>
+        )}
       </div>
 
       <div className='mt-3 flex flex-col items-center'>
-        <div> {isRecording && <p> you are recording ...</p>}</div>
-
         <div className='flex flex-col gap-2'>
           <div className='flex flex-col gap-2'>
             {audios.length > 0 &&
@@ -100,7 +98,9 @@ const AudioRecorder = () => {
                 </div>
               ))}
           </div>
-          <button className={buttonVariants()}>Submit your recording</button>
+          <button className={buttonVariants()} disabled={!(audios.length > 4)}>
+            Submit your recording
+          </button>
         </div>
       </div>
     </div>

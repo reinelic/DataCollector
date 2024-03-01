@@ -10,14 +10,14 @@ import { getCsrfToken } from 'next-auth/react'
 export default async function Login() {
   const session = await getServerSession(authConfig)
 
-  console.log('Session: ', session)
-
   if (session) return redirect('/')
 
   return (
-    <div className='flex min-h-screen w-full flex-col items-center justify-center py-2'>
-      <div className='mt-10 flex flex-col items-center p-10 shadow-md'>
-        <h1 className='mb-4 mt-10 text-4xl font-bold'>Sign In on TWB</h1>
+    <div className='flex min-h-screen w-full flex-col items-center justify-center '>
+      <h3 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+        Demo <span className='text-blue-600'> Data Collector</span>.
+      </h3>
+      <div className='mt-4 flex flex-col items-center p-10 shadow-md'>
         <GoogleSignInButton />
       </div>
     </div>
