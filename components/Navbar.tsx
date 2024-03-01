@@ -5,22 +5,20 @@ import NavItems from './NavItems'
 import { signOut } from 'next-auth/react'
 import { getServerSession } from 'next-auth'
 import { authConfig } from '../auth'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
-
-  
+  const [user, setUser] = useState<any>(null)
   useEffect(() => {
-
-    getServerSession(authConfig).then((session){
-      console.log(session)
-    }).catch((err) =>{
-      console.log(error )
-    })
-    
+    getServerSession(authConfig)
+      .then((session) => {
+        console.log(session)
+        setUser(session)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
-
-  
 
   console.log(session)
 
