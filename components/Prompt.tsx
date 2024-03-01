@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Prompt() {
-  const [id, setId] = useState<any>(1)
+  const [id, setId] = useState<number>(1)
   const [prompt, setPromt] = useState<String>('')
 
   const getPrompts = async () => {
@@ -22,7 +22,7 @@ export default function Prompt() {
   }, [id])
 
   const handleSkip = () => {
-    if (id < 3) {
+    if (parseInt(id) < 3) {
       let newId = id + 1
       setId(newId)
     }
