@@ -23,7 +23,9 @@ export const Navbar = () => {
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
               <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
-                <span onClick={() => signOut()}>{user && 'Sign out'}</span>
+                <span onClick={() => signOut()}>
+                  {session?.user?.name && 'Sign out'}
+                </span>
               </div>
             </div>
           </div>
