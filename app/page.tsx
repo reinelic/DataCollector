@@ -1,7 +1,11 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import AudioRecorder from '@/components/AudioRecorder'
 
-import { authConfig, loginIsRequiredServer } from '../auth'
+import {
+  authConfig,
+  loginIsRequiredServer,
+  loginIsRequiredClient,
+} from '../auth'
 
 import { getServerSession } from 'next-auth'
 import type { Metadata } from 'next'
@@ -12,7 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  await loginIsRequiredServer()
+  await loginIsRequiredClient()
 
   const session = await getServerSession(authConfig)
 

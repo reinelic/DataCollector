@@ -7,9 +7,14 @@ type Props = {
   children?: React.ReactNode
 }
 
-export const NextAuthProvider = (
-  { children }: Props,
-  { Component, pageProps: { session, ...pageProps } }: AppProps
-) => {
-  return <SessionProvider session={session}>{children}</SessionProvider>
+export const NextAuthProvider = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
+  return (
+    <SessionProvider session={session}>
+      {' '}
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
 }
