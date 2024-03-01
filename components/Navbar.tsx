@@ -20,7 +20,7 @@ export const Navbar = () => {
       })
   }, [])
 
-  console.log(session)
+  console.log(user)
 
   return (
     <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
