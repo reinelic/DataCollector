@@ -9,9 +9,14 @@ import { authConfig } from '../auth'
 import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
-  const { data: session, status } = useSession()
+  useEffect(() => {
+    getSession()
+  }, [])
 
-  console.log(session)
+  const getSession = async () => {
+    const session = await getServerSession(authConfig)
+    console.log(session)
+  }
 
   return (
     <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
