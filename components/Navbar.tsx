@@ -8,9 +8,19 @@ import { authConfig } from '../auth'
 import { useEffect } from 'react'
 
 export const Navbar = () => {
+
+  
   useEffect(() => {
-    const session = await getServerSession(authConfig)
+
+    getServerSession(authConfig).then((session){
+      console.log(session)
+    }).catch((err) =>{
+      console.log(error )
+    })
+    
   }, [])
+
+  
 
   console.log(session)
 
