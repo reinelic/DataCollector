@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Prompt() {
-  const [id, setId] = useState<number>(1)
+  const [id, setId] = useState<any>(1)
   const [prompt, setPromt] = useState<String>('')
 
   const getPrompts = async () => {
