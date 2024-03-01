@@ -1,6 +1,7 @@
 'use client'
 import { buttonVariants } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
+import Prompt from './Prompt'
 
 // Declare a global interface to add the webkitSpeechRecognition property to the Window object
 declare global {
@@ -64,6 +65,8 @@ const AudioRecorder = () => {
       <h3 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
         Demo <span className='text-blue-600'> Data Collector</span>.
       </h3>
+
+      <Prompt />
 
       <p className='mt-6 max-w-prose text-lg text-muted-foreground'>
         {' '}
