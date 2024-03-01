@@ -1,6 +1,6 @@
 import MaxWidthWrapper from './MaxWidthWrapper'
 import NavItems from './NavItems'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import { getServerSession } from 'next-auth'
 import { authConfig } from '../auth'
 
@@ -18,7 +18,9 @@ export const Navbar = async () => {
 
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
-              <div className='z-50 hidden lg:ml-8 lg:block '></div>
+              <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
+                <span onClick={() => signOut()}>{session && 'Sign out'}</span>
+              </div>
             </div>
           </div>
         </MaxWidthWrapper>
