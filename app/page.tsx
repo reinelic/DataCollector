@@ -10,15 +10,11 @@ import {
 import { getServerSession } from 'next-auth'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'datacollector',
-  description: 'this is the',
-}
-
 export default async function Page() {
-  await loginIsRequiredClient()
+  await loginIsRequiredServer()
 
   const session = await getServerSession(authConfig)
+  console.log('session')
 
   return (
     <MaxWidthWrapper>
