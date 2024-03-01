@@ -30,6 +30,7 @@ const AudioRecorder = () => {
         stream = newstream
         console.log(stream)
       })
+    localStorage.setItem('dataKey', 'already onboarded')
   }, [])
 
   const handleStart = () => {
