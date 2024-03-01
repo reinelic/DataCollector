@@ -9,6 +9,7 @@ import { authConfig } from '../auth'
 import { useEffect, useState } from 'react'
 
 export const Navbar = () => {
+  const [user, setUser] = useState<any>(null)
   useEffect(() => {
     getSession()
   }, [])
@@ -29,7 +30,7 @@ export const Navbar = () => {
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
               <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
-                <span onClick={() => signOut()}>{session && 'Sign out'}</span>
+                <span onClick={() => signOut()}>{user && 'Sign out'}</span>
               </div>
             </div>
           </div>
