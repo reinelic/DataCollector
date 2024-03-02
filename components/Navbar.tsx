@@ -14,8 +14,8 @@ export const Navbar = () => {
   console.log(session)
 
   return (
-    <div className='sticky inset-x-0 top-0 z-50 h-16 bg-white'>
-      <header className='relative bg-white'>
+    <div className='sticky inset-x-0 top-0 z-0 h-16 bg-white'>
+      <header className=' bg-white'>
         <MaxWidthWrapper>
           <div className='border-b border-gray-200'>
             <div className='flex h-16 items-center justify-between'>
@@ -24,12 +24,7 @@ export const Navbar = () => {
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
               <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
-                <span
-                  className={buttonVariants({
-                    variant: 'ghost',
-                  })}
-                  onClick={() => signOut()}
-                >
+                <span onClick={() => signOut()} className='cursor-pointer'>
                   {session?.user?.name && 'Sign out'}
                 </span>
               </div>

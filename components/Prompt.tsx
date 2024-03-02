@@ -40,12 +40,17 @@ export default function Prompt() {
 
   return (
     <div className=' h-1/2 w-1/2  gap-5'>
-      <Card className=''>
-        <CardHeader>
-          <CardDescription> the prompt will last 2 sec </CardDescription>
-        </CardHeader>
+      <div className='py-4 text-muted'>
+        {' '}
+        Please click on the button to start recording
+      </div>
+      <Card className='py-12'>
+        <CardHeader></CardHeader>
         <CardContent>
-          <p className=''>{prompt}</p>
+          <div className='text-3xl text-foreground text-slate-500'>
+            {' '}
+            {prompt}
+          </div>
         </CardContent>
       </Card>
       <div
