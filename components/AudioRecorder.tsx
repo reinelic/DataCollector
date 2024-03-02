@@ -30,7 +30,7 @@ const AudioRecorder = () => {
         stream = newstream
         console.log(stream)
       })
-    localStorage.setItem('dataKey', 'already onboarded')
+    localStorage.setItem('dataKey', 'onboarded')
   }, [])
 
   const handleStart = () => {
@@ -64,28 +64,13 @@ const AudioRecorder = () => {
   }
 
   return (
-    <div className='mx-auto flex max-w-3xl flex-col items-center py-20  text-center'>
-      <Prompt />
-
-      <p className='mt-6 max-w-prose text-lg text-muted-foreground'>
-        {' '}
-        Please click on button to start recording
-      </p>
-      <div className='mt-6 flex flex-col gap-4 sm:flex-row'>
-        {isRecording ? (
-          <button type='button' onClick={handleStop}>
-            {' '}
-            <StopCircle />
-          </button>
-        ) : (
-          <button type='button' onClick={handleStart}>
-            <Mic />
-          </button>
-        )}
+    <div className='relative flex  min-h-96 flex-col items-center py-24 text-center'>
+      <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
+        <Prompt />
       </div>
 
-      <div className='mt-3 flex flex-col items-center'>
-        <div className='flex flex-col gap-2'>
+      <div className='h-full w-1/5 py-12 text-end lg:absolute lg:right-0 lg:top-0'>
+        <div className=''>
           <div className='flex flex-col gap-2'>
             {audios.length > 0 &&
               audios.map((audio, index) => (
@@ -99,9 +84,30 @@ const AudioRecorder = () => {
                 </div>
               ))}
           </div>
-          <button className={buttonVariants()} disabled={!(audios.length > 4)}>
-            Submit your recording
-          </button>
+        </div>
+      </div>
+
+      <div className=' absolute bottom-0 right-0'>
+        <button className={buttonVariants()} disabled={!(audios.length > 4)}>
+          Submit your recording
+        </button>
+      </div>
+      <div className='absolute bottom-0 mx-auto'>
+        <div className='flex-grow'>
+          {isRecording ? (
+            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-red-100 '>
+              <button type='button' onClick={handleStop}>
+                {' '}
+                <StopCircle size={32} color='red' />
+              </button>
+            </div>
+          ) : (
+            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-red-100 '>
+              <button type='button' onClick={handleStart}>
+                <Mic size={32} color='red' />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

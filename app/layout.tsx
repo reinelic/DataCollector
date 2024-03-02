@@ -23,8 +23,8 @@ export default function RootLayout({
         <body className={cn('antialised relative h-full font-sans')}>
           <Navbar />
 
-          <main className='relative flex min-h-screen flex-col'>
-            <div className='flex-1 flex-grow'>{children}</div>
+          <main className='relative flex min-h-screen flex-col justify-center '>
+            <div className='flex  flex-grow flex-col'>{children}</div>
           </main>
         </body>
       </NextAuthProvider>

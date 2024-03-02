@@ -4,6 +4,8 @@ import { redirect, useRouter } from 'next/navigation'
 
 import GoogleProvider from 'next-auth/providers/google'
 
+const google = process.env.GOOGLE_CLIENT_SECRET
+
 export const authConfig: NextAuthOptions = {
   providers: [
     GoogleProvider({

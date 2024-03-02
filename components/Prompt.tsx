@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { ChevronRight } from 'lucide-react'
+ChevronRight
 
 export default function Prompt() {
   const [id, setId] = useState<any>(1)
@@ -37,16 +39,24 @@ export default function Prompt() {
   }
 
   return (
-    <>
-      <Card className='mt-2 h-full w-full bg-slate-100'>
+    <div className=' h-1/2 w-1/2  gap-5'>
+      <Card className=''>
         <CardHeader>
           <CardDescription> the prompt will last 2 sec </CardDescription>
         </CardHeader>
         <CardContent>
-          <p>{prompt}</p>
+          <p className=''>{prompt}</p>
         </CardContent>
       </Card>
-      <span onClick={handleSkip}> Skip </span>
-    </>
+      <div
+        className='mt-4 flex flex-row items-center gap-1   text-sm'
+        onClick={handleSkip}
+      >
+        <div className='flex cursor-pointer  flex-row items-center justify-end rounded-xl bg-slate-50 px-5 py-2  hover:bg-slate-100'>
+          <div className='text-muted text-slate-400'>Skip</div>
+          <ChevronRight color='#d9d9d9' />
+        </div>
+      </div>
+    </div>
   )
 }
