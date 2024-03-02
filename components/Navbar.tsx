@@ -5,6 +5,7 @@ import NavItems from './NavItems'
 import { useSession, signOut } from 'next-auth/react'
 import { authConfig } from '../auth'
 import { useEffect, useState } from 'react'
+import { buttonVariants } from './ui/button'
 
 export const Navbar = () => {
   const [user, setUser] = useState<any>(null)
@@ -23,7 +24,12 @@ export const Navbar = () => {
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
               <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
-                <span className='cursor-pointer' onClick={() => signOut()}>
+                <span
+                  className={buttonVariants({
+                    variant: 'ghost',
+                  })}
+                  onClick={() => signOut()}
+                >
                   {session?.user?.name && 'Sign out'}
                 </span>
               </div>

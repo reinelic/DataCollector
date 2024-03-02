@@ -64,7 +64,7 @@ const AudioRecorder = () => {
   }
 
   return (
-    <div className='relative flex  min-h-96 flex-col items-center py-24 text-center'>
+    <div className='relative flex  min-h-96 flex-col items-center py-32 text-center'>
       <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
         <Prompt />
       </div>
