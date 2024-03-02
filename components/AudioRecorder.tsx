@@ -75,6 +75,7 @@ const AudioRecorder = () => {
             {audios.length > 0 &&
               audios.map((audio, index) => (
                 <div
+                  className='w-full rounded-2xl bg-slate-50 p-2 '
                   onClick={() => {
                     handlePlay(index)
                   }}
@@ -102,9 +103,9 @@ const AudioRecorder = () => {
               </button>
             </div>
           ) : (
-            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-red-100 '>
+            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 '>
               <button type='button' onClick={handleStart}>
-                <Mic size={32} color='red' />
+                <Mic size={32} color='gray' />
               </button>
             </div>
           )}
