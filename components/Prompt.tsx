@@ -49,7 +49,7 @@ export default function Prompt() {
         </CardContent>
       </Card>
       <div
-        className='mt-4 flex flex-row items-center gap-1   text-sm'
+        className='mt-4 flex flex-row items-center justify-end gap-1   text-sm'
         onClick={handleSkip}
       >
         <div className='flex cursor-pointer  flex-row items-center justify-end rounded-xl bg-slate-50 px-5 py-2  hover:bg-slate-100'>

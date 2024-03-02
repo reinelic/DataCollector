@@ -96,16 +96,16 @@ const AudioRecorder = () => {
       <div className='absolute bottom-0 mx-auto'>
         <div className='flex-grow'>
           {isRecording ? (
-            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-red-100 '>
+            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
               <button type='button' onClick={handleStop}>
                 {' '}
-                <StopCircle size={32} color='red' />
+                <StopCircle size={32} color='#ed6f55' />
               </button>
             </div>
           ) : (
-            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 '>
+            <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
               <button type='button' onClick={handleStart}>
-                <Mic size={32} color='gray' />
+                <Mic size={32} color='#ed6f55' />
               </button>
             </div>
           )}
