@@ -73,9 +73,9 @@ const OnboardingForm = ({ close }: any) => {
                       <SelectValue placeholder='Age ' />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value='18-34'>'18-34'</SelectItem>
-                      <SelectItem value='35-44'>'35-44'</SelectItem>
-                      <SelectItem value='45-54'>'45-54'</SelectItem>
+                      <SelectItem value='18-34'>18-34</SelectItem>
+                      <SelectItem value='35-44'>35-44</SelectItem>
+                      <SelectItem value='45-54'>45-54</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
