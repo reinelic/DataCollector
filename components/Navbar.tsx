@@ -28,7 +28,9 @@ export const Navbar = () => {
                 {/* <span onClick={() => signOut()} className='cursor-pointer'>
                   {session?.user?.name && 'Sign out'}
                 </span> */}
-                {session && <UserAccountNavbar logout={() => signOut()} />}
+                {session?.user && (
+                  <UserAccountNavbar logout={() => signOut()} />
+                )}
               </div>
             </div>
           </div>
