@@ -28,7 +28,6 @@ export const Navbar = () => {
                 <span onClick={() => signOut()} className='cursor-pointer'>
                   {session?.user?.name && 'Sign out'}
                 </span>
-                <UserAccountNav logout={signOut()} />
               </div>
             </div>
           </div>
