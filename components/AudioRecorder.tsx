@@ -1,6 +1,6 @@
 'use client'
 import { buttonVariants } from '@/components/ui/button'
-import { Mic, Ban, StopCircle, TrendingUp } from 'lucide-react'
+import { Mic, StopCircle, Play, Pause } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Prompt from './Prompt'
 import OnboardingForm from './OnboardingForm'
@@ -39,7 +39,6 @@ const AudioRecorder = () => {
       setOnboard(true)
     } else {
       setOnboard(false)
-      localStorage.setItem('onboarded', 'true')
     }
   }, [])
 
@@ -81,35 +80,44 @@ const AudioRecorder = () => {
   return (
     <>
       {!onBoard && (
-        <div className='fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 '>
+        <div className='fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black bg-opacity-75 '>
           <OnboardingForm close={onSubmit} />
         </div>
       )}
-      <div className='relative z-0 flex  min-h-96 flex-col items-center py-32 text-center'>
+      <div className='relative z-0 flex  min-h-96 flex-col items-center py-12 text-center'>
         <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
-          <Prompt />
+          <Prompt skip={isRecording} />
         </div>
 
-        <div className='h-full w-1/5 py-12 text-end lg:absolute lg:right-0 lg:top-0'>
+        <div className='h-full w-1/5 py-24 text-end lg:absolute lg:right-0 lg:top-0'>
           <div className=''>
             <div className='flex flex-col gap-2'>
               {audios.length > 0 &&
                 audios.map((audio, index) => (
                   <div
                     className='w-full rounded-2xl bg-slate-50 p-2 '
-                    onClick={() => {
-                      handlePlay(index)
-                    }}
                     key={index}
                   >
                     `audio ${index}`
+                    <button
+                      onClick={() => {
+                        handlePlay(index)
+                      }}
+                    >
+                      {' '}
+                      <Play />
+                    </button>
+                    <button>
+                      {' '}
+                      <Pause />
+                    </button>
                   </div>
                 ))}
             </div>
           </div>
         </div>
 
-        <div className=' absolute bottom-0 right-0'>
+        <div className=' absolute bottom-10 right-0'>
           <button className={buttonVariants()} disabled={!(audios.length > 4)}>
             Submit your recording
           </button>

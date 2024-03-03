@@ -12,17 +12,19 @@ import {
 import { ChevronRight } from 'lucide-react'
 ChevronRight
 
-export default function Prompt() {
+export default function Prompt({ skip }) {
   const [id, setId] = useState<any>(1)
   const [prompt, setPromt] = useState<String>('')
 
   const getPrompts = async () => {
     let prompts = await fetch(
-      `https://jsonplaceholder.typicode.com/todos/${id}`
+      `https://my-json-server.typicode.com/reinelic/promptsDemo/prompts/${id}`
     )
     const data = await prompts.json()
 
-    setPromt(data.title)
+    console.log(data)
+
+    setPromt(data.text)
 
     console.log(data)
   }
@@ -32,7 +34,7 @@ export default function Prompt() {
   }, [id])
 
   const handleSkip = () => {
-    if (parseInt(id) < 3) {
+    if (parseInt(id) < 6) {
       let newId = id + 1
       setId(newId)
     }
@@ -53,15 +55,17 @@ export default function Prompt() {
           </div>
         </CardContent>
       </Card>
-      <div
-        className='mt-4 flex flex-row items-center justify-end text-sm'
-        onClick={handleSkip}
-      >
-        <div className='flex cursor-pointer  flex-row items-center justify-end rounded-2xl bg-slate-50 px-4 py-1  hover:bg-slate-100'>
-          <div className='text-muted text-slate-500'>Skip</div>
-          <ChevronRight color='#d9d9d9' />
+      {!skip && (
+        <div
+          className='mt-4 flex flex-row items-center justify-end text-sm'
+          onClick={handleSkip}
+        >
+          <div className='flex cursor-pointer  flex-row items-center justify-end rounded-2xl bg-slate-50 px-4 py-1  hover:bg-slate-100'>
+            <div className='text-muted text-slate-500'>Skip</div>
+            <ChevronRight color='#d9d9d9' />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -12,15 +12,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-  age: z.string().min(2, {
-    message: '',
-  }),
+  gender: z.string,
+  age: z.string,
 })
 
 const OnboardingForm = ({ close }) => {
@@ -31,54 +34,65 @@ const OnboardingForm = ({ close }) => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
-
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(close)}
-        className='rounded-md bg-white p-4 shadow-md'
-      >
-        <FormField
-          control={form.control}
-          name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder='shadcn' {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(close)}
+          className='rounded-md bg-white px-6 py-4 shadow-md'
+        >
+          <div className='py-4 text-sm text-slate-600 '>
+            {' '}
+            Before proceeding please fill the below information :
+          </div>
+          <FormField
+            control={form.control}
+            name='gender'
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Select>
+                    <SelectTrigger className='h-8 w-full border border-slate-300'>
+                      <SelectValue placeholder='Gender' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value='light'>Male</SelectItem>
+                      <SelectItem value='dark'>Female</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder='shadcn' {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type='submit'>Submit</Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name='age'
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Select>
+                    <SelectTrigger className='mt-4 h-8 w-full'>
+                      <SelectValue placeholder='Age ' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value='18-34'>'18-34'</SelectItem>
+                      <SelectItem value='35-44'>'35-44'</SelectItem>
+                      <SelectItem value='45-54'>'45-54'</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <div onClick={close} className='cursor-pointer'>
+            {' '}
+            Next
+          </div>
+        </form>
+      </Form>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ export const Navbar = () => {
   console.log(session)
 
   return (
-    <div className='sticky inset-x-0 top-0 z-0 h-16 bg-white'>
+    <div className='z-100  sticky inset-x-0 top-0 h-16 bg-white'>
       <header className=' bg-white'>
         <MaxWidthWrapper>
           <div className='border-b border-gray-200'>
