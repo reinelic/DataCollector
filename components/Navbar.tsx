@@ -6,6 +6,7 @@ import { useSession, signOut } from 'next-auth/react'
 import { authConfig } from '../auth'
 import { useEffect, useState } from 'react'
 import { buttonVariants } from './ui/button'
+import UserAccountNav from './UserAccountNavbar'
 
 export const Navbar = () => {
   const [user, setUser] = useState<any>(null)
@@ -27,6 +28,7 @@ export const Navbar = () => {
                 <span onClick={() => signOut()} className='cursor-pointer'>
                   {session?.user?.name && 'Sign out'}
                 </span>
+                <UserAccountNav logout={signOut()} />
               </div>
             </div>
           </div>

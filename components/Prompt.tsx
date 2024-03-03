@@ -12,7 +12,7 @@ import {
 import { ChevronRight } from 'lucide-react'
 ChevronRight
 
-export default function Prompt({ skip }) {
+export default function Prompt({ skip }: any) {
   const [id, setId] = useState<any>(1)
   const [prompt, setPromt] = useState<String>('')
 
@@ -37,6 +37,8 @@ export default function Prompt({ skip }) {
     if (parseInt(id) < 6) {
       let newId = id + 1
       setId(newId)
+    } else {
+      setId(1)
     }
   }
 

@@ -7,6 +7,7 @@ import OnboardingForm from './OnboardingForm'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import Link from 'next/link'
 
 // Declare a global interface to add the webkitSpeechRecognition property to the Window object
 declare global {
@@ -119,24 +120,28 @@ const AudioRecorder = () => {
 
         <div className=' absolute bottom-10 right-0'>
           <button className={buttonVariants()} disabled={!(audios.length > 4)}>
-            Submit your recording
+            <Link href='/thank'> Submit your recording </Link>
           </button>
         </div>
         <div className='absolute bottom-0 mx-auto'>
           <div className='flex-grow'>
-            {isRecording ? (
-              <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
-                <button type='button' onClick={handleStop}>
-                  {' '}
-                  <StopCircle size={32} color='#ed6f55' />
-                </button>
-              </div>
+            {audios.length < 5 ? (
+              isRecording ? (
+                <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
+                  <button type='button' onClick={handleStop}>
+                    {' '}
+                    <StopCircle size={32} color='#ed6f55' />
+                  </button>
+                </div>
+              ) : (
+                <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
+                  <button type='button' onClick={handleStart}>
+                    <Mic size={32} color='#ed6f55' />
+                  </button>
+                </div>
+              )
             ) : (
-              <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
-                <button type='button' onClick={handleStart}>
-                  <Mic size={32} color='#ed6f55' />
-                </button>
-              </div>
+              <div>You can now submit your recordings</div>
             )}
           </div>
         </div>

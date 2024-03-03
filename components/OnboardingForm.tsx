@@ -22,25 +22,22 @@ import {
 import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
-  gender: z.string,
-  age: z.string,
+  gender: z.string().min(2).max(50),
+  age: z.number(),
 })
 
-const OnboardingForm = ({ close }) => {
+const OnboardingForm = ({ close }: any) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      gender: '',
     },
   })
 
   return (
     <>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(close)}
-          className='rounded-md bg-white px-6 py-4 shadow-md'
-        >
+        <form className='rounded-md bg-white px-6 py-4 shadow-md'>
           <div className='py-4 text-sm text-slate-600 '>
             {' '}
             Before proceeding please fill the below information :
