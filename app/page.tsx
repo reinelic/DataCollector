@@ -11,7 +11,7 @@ import { getServerSession } from 'next-auth'
 import type { Metadata } from 'next'
 
 export default async function Page() {
-  // await loginIsRequiredServer()
+  await loginIsRequiredServer()
 
   const session = await getServerSession(authConfig)
   console.log('session')
