@@ -83,10 +83,14 @@ const OnboardingForm = ({ close }: any) => {
             )}
           />
 
-          <div onClick={close} className='cursor-pointer'>
-            {' '}
+          <Button
+            onClick={close}
+            variant='ghost'
+            size='sm'
+            className='mt-4 cursor-pointer'
+          >
             Next
-          </div>
+          </Button>
         </form>
       </Form>
     </>

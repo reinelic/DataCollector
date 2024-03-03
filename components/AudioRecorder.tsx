@@ -75,6 +75,7 @@ const AudioRecorder = () => {
 
   function onSubmit() {
     console.log('clicked')
+    localStorage.setItem('onboarded', 'true')
     setOnboard(true)
   }
 
