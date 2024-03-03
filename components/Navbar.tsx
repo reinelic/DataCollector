@@ -15,7 +15,7 @@ export const Navbar = () => {
   console.log(session)
 
   return (
-    <div className='z-100  sticky inset-x-0 top-0 h-16 bg-white'>
+    <div className='z-100  relative inset-x-0 top-0 h-16 bg-white'>
       <header className=' bg-white'>
         <MaxWidthWrapper>
           <div className='border-b border-gray-200'>
@@ -24,7 +24,7 @@ export const Navbar = () => {
 
               <div className='ml-4 flex lg:ml-0'>DataCollector</div>
 
-              <div className='z-50 ml-auto hidden lg:ml-8 lg:block '>
+              <div className=' ml-auto hidden lg:ml-8 lg:block '>
                 {/* <span onClick={() => signOut()} className='cursor-pointer'>
                   {session?.user?.name && 'Sign out'}
                 </span> */}

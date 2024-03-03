@@ -85,12 +85,12 @@ const AudioRecorder = () => {
           <OnboardingForm close={onSubmit} />
         </div>
       )}
-      <div className='relative z-0 flex  min-h-96 flex-col items-center py-12 text-center'>
+      <div className='bg-slate-300s relative z-0  flex min-h-96 flex-col items-center py-24 text-center'>
         <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
           <Prompt skip={isRecording} />
         </div>
 
-        <div className='h-full w-1/5 py-24 text-end lg:absolute lg:right-0 lg:top-0'>
+        <div className=' w-1/5 py-24 text-start lg:absolute lg:right-0 lg:top-0 lg:z-0'>
           <div className=''>
             <div className='flex flex-col gap-2'>
               {audios.length > 0 &&
