@@ -106,7 +106,7 @@ const AudioRecorder = () => {
           <Prompt skip={isRecording} />
         </div>
 
-        <div className=' w-1/5 py-24 text-start lg:absolute lg:right-0 lg:top-0 lg:z-0'>
+        <div className=' w-1/5 py-24 text-center lg:absolute lg:right-0 lg:top-0 lg:z-0'>
           <div className=''>
             <div className='flex flex-col gap-2'>
               {audios.length > 0 &&
@@ -115,7 +115,7 @@ const AudioRecorder = () => {
                     className='flex w-full flex-row items-center gap-1 rounded-2xl bg-slate-50 p-2'
                     key={index}
                   >
-                    {index + 1} :
+                    Recording {index + 1} :
                     <button
                       onClick={() => {
                         handlePlay(index)
