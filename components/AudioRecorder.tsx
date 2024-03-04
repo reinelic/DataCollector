@@ -1,5 +1,6 @@
 'use client'
 import { buttonVariants } from '@/components/ui/button'
+import { Button } from './ui/button'
 import { Mic, StopCircle, Play, Pause } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Prompt from './Prompt'
@@ -138,7 +139,9 @@ const AudioRecorder = () => {
             }
             disabled={!(audios.length > 4)}
           >
-            <Link href='/thank'> Submit your recording </Link>
+            <Button variant='ghost' size='sm' className='relative'>
+              <Link href='/thank'>Submit your recording </Link>
+            </Button>
           </button>
         </div>
         <div className='absolute bottom-0 mx-auto'>
