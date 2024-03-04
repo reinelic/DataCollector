@@ -5,7 +5,7 @@ const Thank = () => {
     <div className='grid h-screen place-content-center'>
       <div>
         <h1 className='text-3xl font-bold'>Thank You!</h1>
-        <p className='mt-4 text-gray-600'>
+        <p className='mt-4 text-blue-400'>
           Your recordings have been successfully sent. We appreciate you
           donating your voice!
         </p>

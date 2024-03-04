@@ -96,6 +96,9 @@ const AudioRecorder = () => {
         <div className='flex flex-row gap-1 py-4 text-sm text-slate-700 '>
           Please click on the icon <Mic /> to start recording
         </div>
+        {isRecording && (
+          <div className='h-4 w-4 animate-pulse rounded-full bg-red-400'></div>
+        )}
         <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
           <Prompt skip={isRecording} />
         </div>
@@ -109,10 +112,7 @@ const AudioRecorder = () => {
                     className='flex w-full flex-row items-center gap-1 rounded-2xl bg-slate-50 p-2'
                     key={index}
                   >
-                    <div className='h-4 w-4  rounded-full bg-slate-400'>
-                      {index + 1}
-                    </div>
-
+                    {index + 1} :
                     <button
                       onClick={() => {
                         handlePlay(index)
@@ -152,7 +152,6 @@ const AudioRecorder = () => {
             {audios.length < 5 ? (
               isRecording ? (
                 <div className='flex h-24 w-24 items-center justify-center rounded-full bg-slate-50 hover:bg-slate-200 '>
-                  <div className='h-4 w-4 animate-pulse rounded-full bg-red-400'></div>
                   <button type='button' onClick={handleStop}>
                     {' '}
                     <StopCircle size={32} color='#ed6f55' />
