@@ -97,7 +97,10 @@ const AudioRecorder = () => {
           Please click on the icon <Mic /> to start recording
         </div>
         {isRecording && (
-          <div className='h-4 w-4 animate-pulse rounded-full bg-red-400'></div>
+          <>
+            <span> Recording </span>
+            <div className='mx-2 mb-3 h-4 w-4 animate-pulse rounded-full bg-red-400'></div>
+          </>
         )}
         <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
           <Prompt skip={isRecording} />
