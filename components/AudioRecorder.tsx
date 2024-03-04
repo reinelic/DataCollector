@@ -109,7 +109,10 @@ const AudioRecorder = () => {
                     className='flex w-full flex-row items-center gap-1 rounded-2xl bg-slate-50 p-2'
                     key={index}
                   >
-                    Recording {index + 1} :
+                    <div className='h-4 w-4  rounded-full bg-slate-400'>
+                      {index + 1}
+                    </div>
+
                     <button
                       onClick={() => {
                         handlePlay(index)
