@@ -145,11 +145,19 @@ const AudioRecorder = () => {
             }
             disabled={!(audios.length > 4)}
           >
-            <Button variant='ghost' size='sm' className='relative'>
+            <Button
+              variant='ghost'
+              size='sm'
+              disabled={audios.length > 5}
+              className={
+                audios.length > 5 ? 'cursor-not-allowed' : 'cursor-pointer'
+              }
+            >
               <Link href='/thank'>Submit your recording </Link>
             </Button>
           </button>
         </div>
+
         <div className='absolute bottom-0 mx-auto'>
           <div className='flex-grow'>
             {audios.length < 5 ? (
