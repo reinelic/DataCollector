@@ -34,7 +34,7 @@ export default function Prompt({ skip }: any) {
   }, [id])
 
   const handleSkip = () => {
-    if (parseInt(id) < 6) {
+    if (parseInt(id) < 5) {
       let newId = id + 1
       setId(newId)
     } else {
