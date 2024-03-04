@@ -73,6 +73,11 @@ const AudioRecorder = () => {
     audio.play()
   }
 
+  const handlePause = (index: any) => {
+    let audio = audios[index]
+    audio.pause()
+  }
+
   function onSubmit() {
     console.log('clicked')
     localStorage.setItem('onboarded', 'true')
@@ -87,6 +92,9 @@ const AudioRecorder = () => {
         </div>
       )}
       <div className='bg-slate-300s relative z-0  flex min-h-96 flex-col items-center py-24 text-center'>
+        <div className='flex flex-row gap-1 py-4 text-sm text-slate-700 '>
+          Please click on the icon <Mic /> to start recording
+        </div>
         <div className=' flex w-full flex-grow flex-col items-center justify-center gap-12'>
           <Prompt skip={isRecording} />
         </div>
@@ -97,21 +105,25 @@ const AudioRecorder = () => {
               {audios.length > 0 &&
                 audios.map((audio, index) => (
                   <div
-                    className='w-full rounded-2xl bg-slate-50 p-2 '
+                    className='flex w-full flex-row items-center gap-1 rounded-2xl bg-slate-50 p-2'
                     key={index}
                   >
-                    `audio ${index}`
+                    Recording {index} :
                     <button
                       onClick={() => {
                         handlePlay(index)
                       }}
                     >
                       {' '}
-                      <Play />
+                      <Play color='gray' />
                     </button>
-                    <button>
+                    <button
+                      onClick={() => {
+                        handlePause(index)
+                      }}
+                    >
                       {' '}
-                      <Pause />
+                      <Pause color='gray' />
                     </button>
                   </div>
                 ))}
@@ -120,7 +132,12 @@ const AudioRecorder = () => {
         </div>
 
         <div className=' absolute bottom-10 right-0'>
-          <button className={buttonVariants()} disabled={!(audios.length > 4)}>
+          <button
+            className={
+              audios.length > 4 ? 'cursor-pointer' : 'cursor-not-allowed'
+            }
+            disabled={!(audios.length > 4)}
+          >
             <Link href='/thank'> Submit your recording </Link>
           </button>
         </div>

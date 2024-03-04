@@ -44,10 +44,6 @@ export default function Prompt({ skip }: any) {
 
   return (
     <div className=' h-1/2 w-1/2  gap-5'>
-      <div className='py-4 text-muted'>
-        {' '}
-        Please click on the button to start recording
-      </div>
       <Card className='py-12'>
         <CardHeader></CardHeader>
         <CardContent>
